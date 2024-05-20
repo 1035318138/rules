@@ -1,0 +1,6 @@
+server.port: 8812
+
+standard:
+  aes:
+    secret: iiXAjdd/eEr+0CR0SCpn/Q22
+    iv: 0123456789ABCD22
