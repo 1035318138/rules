@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author Can.Ru
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@ComponentScan("rules")
+@ComponentScan(basePackages = {"rules", "threadLocal.utils"})
 public class RulesApplication {
 
     public static void main(String[] args) {

@@ -5,6 +5,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import threadLocal.Test;
+import threadLocal.utils.ThreadPoolUtil;
 
 import java.util.Date;
 import java.util.concurrent.CompletableFuture;
@@ -20,14 +21,17 @@ public class ThreadLocalController {
 
 
     @Autowired
-    private ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+    private ThreadPoolUtil threadPoolUtil;
 
 
     @RequestMapping("/demo1")
     public Boolean demo1() {
         for (int i = 0; i < 20; i++) {
             int finalI = i;
-            CompletableFuture.runAsync(() -> Test.excute(finalI), executor);
+
+            threadPoolUtil.asyncRun(obj->{
+                Test.excute(finalI);
+            });
 
         }
         return true;
