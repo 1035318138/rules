@@ -1,5 +1,6 @@
 package threadLocal.utils;
 
+import jodd.util.StringUtil;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +126,13 @@ public class LockUtil {
 
     public String get(String key) {
         return redisTemplate.opsForValue().get(key);
+    }
+    public Integer getInteger(String key) {
+        String v = redisTemplate.opsForValue().get(key);
+        if(StringUtil.isNotBlank(v)){
+            return Integer.valueOf(v);
+        }
+        return null;
     }
 
     /**
