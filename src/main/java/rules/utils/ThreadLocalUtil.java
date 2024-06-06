@@ -1,4 +1,4 @@
-package threadLocal.utils;
+package rules.utils;
 
 import java.util.*;
 

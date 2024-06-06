@@ -1,4 +1,4 @@
-package threadLocal.utils;
+package rules.utils;
 
 import jodd.util.StringUtil;
 import org.redisson.api.RLock;

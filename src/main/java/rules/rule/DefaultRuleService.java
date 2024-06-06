@@ -1,21 +1,17 @@
-package rules;
+package rules.rule;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.expression.BeanFactoryResolver;
-import org.springframework.expression.Expression;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Service;
-import rules.method.DemoService;
-
-import javax.swing.*;
 
 /**
  * @author Can.Ru
  */
 @Service
-public class DefaultRuleService implements RuleService{
+public class DefaultRuleService implements RuleService {
     
     @Autowired
     private ApplicationContext applicationContext;

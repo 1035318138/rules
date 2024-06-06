@@ -1,4 +1,4 @@
-package threadLocal.utils;
+package rules.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;

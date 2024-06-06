@@ -1,12 +1,12 @@
-package threadLocal;
+package rules.threadLocal;
 
-import threadLocal.utils.ThreadLocalUtil;
+import rules.utils.ThreadLocalUtil;
 
 
 /**
  * @author Can.Ru
  */
-public class Test {
+public class ThreadLocalTest {
 
 
     private static final String A ="A";
@@ -15,7 +15,7 @@ public class Test {
 
 
 
-    public static void excute(int i) {
+    public static void doExecute(int i) {
         System.out.println(i+"*"+"before*"+Thread.currentThread().getName() +ThreadLocalUtil.get(A));
         System.out.println(i+"*"+"before*"+Thread.currentThread().getName() +ThreadLocalUtil.get(B));
         System.out.println(i+"*"+"before*"+Thread.currentThread().getName() +ThreadLocalUtil.get(C));
@@ -27,6 +27,8 @@ public class Test {
         System.out.println("before*"+i+"*"+Thread.currentThread().getName() +ThreadLocalUtil.get(A));
         System.out.println("before*"+i+"*"+Thread.currentThread().getName() +ThreadLocalUtil.get(B));
         System.out.println("before*"+i+"*"+Thread.currentThread().getName() +ThreadLocalUtil.get(C));
+
+        //业务逻辑执行完不清理该线程上下文数据 会导致<before>块业务还保留着上个线程的值
         ThreadLocalUtil.getThreadLocal().clear();
     }
 }

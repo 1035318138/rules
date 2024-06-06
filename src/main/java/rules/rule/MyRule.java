@@ -1,4 +1,4 @@
-package rules;
+package rules.rule;
 
 import org.easyrules.annotation.Action;
 import org.easyrules.annotation.Condition;

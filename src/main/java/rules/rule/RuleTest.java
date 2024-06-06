@@ -1,13 +1,9 @@
-package rules;
+package rules.rule;
 
 import org.easyrules.api.RulesEngine;
 import org.easyrules.core.RulesEngineBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 
-public class DemoApp {
-
-    @Autowired
-    private RuleService ruleService;
+public class RuleTest {
 
     public static void main(String[] args) {
         // 创建规则对象

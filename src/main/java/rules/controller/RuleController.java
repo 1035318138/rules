@@ -5,8 +5,8 @@ import org.easyrules.core.RulesEngineBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import rules.MyRule;
-import rules.RuleService;
+import rules.rule.MyRule;
+import rules.rule.RuleService;
 
 /**
  * @author Can.Ru

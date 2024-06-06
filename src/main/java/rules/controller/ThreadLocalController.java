@@ -1,11 +1,10 @@
 package rules.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import threadLocal.Test;
-import threadLocal.utils.ThreadPoolUtil;
+import rules.threadLocal.ThreadLocalTest;
+import rules.utils.ThreadPoolUtil;
 
 import java.util.Date;
 import java.util.concurrent.CompletableFuture;
@@ -24,13 +23,17 @@ public class ThreadLocalController {
     private ThreadPoolUtil threadPoolUtil;
 
 
-    @RequestMapping("/demo1")
-    public Boolean demo1() {
+    /**
+     * 使用ThreadLocalUtil切记使用完要回收掉 不然可能会存在数据紊乱
+     * @return
+     */
+    @RequestMapping("/checkThreadLocal")
+    public Boolean checkThreadLocal() {
         for (int i = 0; i < 20; i++) {
             int finalI = i;
 
             threadPoolUtil.asyncRun(obj->{
-                Test.excute(finalI);
+                ThreadLocalTest.doExecute(finalI);
             });
 
         }
@@ -41,6 +44,10 @@ public class ThreadLocalController {
     @Autowired
     private static final ExecutorService executorService = Executors.newFixedThreadPool(10);
 
+    /**
+     * 适当的线程并行可避免qps过大
+     * @return
+     */
     @RequestMapping("/fixedThread")
     public String decode() {
         for (int i = 0; i < 1010; i++) {
